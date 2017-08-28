@@ -24,7 +24,7 @@
 <requires-extension name="acceleratorstorefrontcommons"/>
 		<requires-extension name="myshowstorefacades"/>
 
-		<webmodule jspcompile="false" webroot="/myshowstorestorefront"/>
+		<webmodule jspcompile="false" webroot="/showstore"/>
 
 		
 		<meta key="extgen-template-extension" value="true"/>
