@@ -1,18 +1,6 @@
-# -----------------------------------------------------------------------
-# [y] hybris Platform
-#
-# Copyright (c) 2017 SAP SE or an SAP affiliate company.  All rights reserved.
-#
-# This software is the confidential and proprietary information of SAP
-# ("Confidential Information"). You shall not disclose such Confidential
-# Information and shall use it only in accordance with the terms of the
-# license agreement you entered into with SAP.
-# -----------------------------------------------------------------------
-# ImpEx for Importing Product Localisations
- 
-# Macros / Replacement Parameter definitions
-$productCatalog=__PRODUCT_CATALOG_NAME__
-$productCatalogName=__PRODUCT_CATALOG_FULL_NAME__
+
+$productCatalog=myshowstoreProductCatalog
+$productCatalogName=My Show Store Product Catalog
 
 $catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
 
@@ -21,3 +9,22 @@ $lang=en
 
 # Update allProducts with localisations
 UPDATE Product;code[unique=true];$catalogVersion;name[lang=$lang];summary[lang=$lang];description[lang=$lang]
+;Shoe1;;Shoe1;This casual shoe from Hush Puppies. ;This shoe gives better feelings and style-up your weekend look.
+;Shoe2;;Shoe2;This casual shoe from Hush Puppies. ;This shoe gives better feelings and style-up your weekend look.
+;Shoe3;;Shoe3;This casual shoe from Hush Puppies. ;This shoe gives better feelings and style-up your weekend look.
+;Shoe4;;Shoe4;This casual shoe from Hush Puppies. ;This shoe gives better feelings and style-up your weekend look.
+;Shoe5;;Shoe5;This casual shoe from Hush Puppies. ;This shoe gives better feelings and style-up your weekend look.
+;Shoe6;;Shoe6;This casual shoe from Hush Puppies. ;This shoe gives better feelings and style-up your weekend look.
+;Shoe7;;Shoe7;This casual shoe from Hush Puppies. ;This shoe gives better feelings and style-up your weekend look.
+;Shoe8;;Shoe8;This casual shoe from Hush Puppies. ;This shoe gives better feelings and style-up your weekend look.
+;Shoe9;;Shoe9;This casual shoe from Hush Puppies. ;This shoe gives better feelings and style-up your weekend look.
+
+
+;Shoe1_L   ;;Shoe1_L   ; This casual shoe from Hush Puppies. ;This shoe gives better feelings and style-up your weekend look.
+;Shoe1_XL  ;;Shoe1_XL  ; This casual shoe from Hush Puppies. ;This shoe gives better feelings and style-up your weekend look.
+;Shoe1_XXL ;;Shoe1_XXL  ; This casual shoe from Hush Puppies. ;This shoe gives better feelings and style-up your weekend look.
+
+
+;Shoe2_black ;;Shoe2_black   ; This casual shoe from Hush Puppies. ;This shoe gives better feelings and style-up your weekend look.
+;Shoe2_brown ;;Shoe2_brown   ; This casual shoe from Hush Puppies. ;This shoe gives better feelings and style-up your weekend look.
+;Shoe2_grey  ;;Shoe2_grey    ; This casual shoe from Hush Puppies. ;This shoe gives better feelings and style-up your weekend look.

@@ -11,12 +11,12 @@
 # ImpEx for Importing Supplier Media
 
 # Macros / Replacement Parameter definitions
-$productCatalog=__PRODUCT_CATALOG_NAME__
-$productCatalogName=__PRODUCT_CATALOG_FULL_NAME__
+$productCatalog=myshowstoreProductCatalog
+$productCatalogName=My Show Store Product Catalog
 
 $catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
 $thumbnail=thumbnail(code, $catalogVersion)
-$siteResource=jar:com.sonata.trining.initialdata.setup.InitialDataSystemSetup&/myshowstoreinitialdata/import/productCatalogs/$productCatalog
+$siteResource=jar:com.sonata.trining.initialdata.constants.MyshowstoreInitialDataConstants&/myshowstoreinitialdata/import/productCatalogs/$productCatalog
 
 INSERT_UPDATE Media;code[unique=true];realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];$catalogVersion
 

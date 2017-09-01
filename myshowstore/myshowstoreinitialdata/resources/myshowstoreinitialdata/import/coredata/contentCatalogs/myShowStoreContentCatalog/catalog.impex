@@ -11,7 +11,7 @@
 #
 # Import the Content Catalog
 #
-$contentCatalog=myShowStoreContentCatalog
+$contentCatalog=myshowstoreContentCatalog
 $languages=en,de
 
 # Content catalog for CMS contents

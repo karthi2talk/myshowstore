@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at Aug 28, 2017 1:45:52 PM                     ---
+ * --- Generated at Aug 31, 2017 4:06:31 PM                     ---
  * ----------------------------------------------------------------
  */
 package com.sonata.trining.core.jalo;

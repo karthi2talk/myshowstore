@@ -2,7 +2,7 @@
 # Import the Solr configuration for the store
 #
 # Index Type
-$solrIndexedType=myShowStoreProductType
+$solrIndexedType=myshowstoreProductType
 # Language
 $lang=en
 # Solr Indexed Property

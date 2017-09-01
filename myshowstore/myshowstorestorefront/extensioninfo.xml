@@ -20,11 +20,11 @@
 <requires-extension name="smarteditaddon"/>
 <requires-extension name="promotionenginesamplesaddon"/>
 <requires-extension name="commerceorgsamplesaddon"/>
-<requires-extension name="liveeditaddon"/>
+<!-- <requires-extension name="liveeditaddon"/> -->
 <requires-extension name="acceleratorstorefrontcommons"/>
 		<requires-extension name="myshowstorefacades"/>
 
-		<webmodule jspcompile="false" webroot="/showstore"/>
+		<webmodule jspcompile="false" webroot="myshowstore"/>
 
 		
 		<meta key="extgen-template-extension" value="true"/>

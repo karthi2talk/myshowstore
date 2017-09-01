@@ -1,28 +1,69 @@
-# -----------------------------------------------------------------------
-# [y] hybris Platform
-#
-# Copyright (c) 2017 SAP SE or an SAP affiliate company.  All rights reserved.
-#
-# This software is the confidential and proprietary information of SAP
-# ("Confidential Information"). You shall not disclose such Confidential
-# Information and shall use it only in accordance with the terms of the
-# license agreement you entered into with SAP.
-# -----------------------------------------------------------------------
-# ImpEx for Importing Products Stock Levels and Warehouses
-
+# ImpEx for Importing Products Stock Levels and Warehouses into Merchandise
+  
 # Macros / Replacement Parameter definitions
-$productCatalog=__PRODUCT_CATALOG_NAME__
-$productCatalogName=__PRODUCT_CATALOG_FULL_NAME__
-$vendor=__VENDOR_NAME__
-
+$productCatalog=myshowstoreProductCatalog
+  
 $catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
-
-
+  
 INSERT_UPDATE Vendor;code[unique=true]
-#;$vendor
-
+;myshowstore;Hybris;Hybris
+  
 INSERT_UPDATE Warehouse;code[unique=true];vendor(code);default[default=true]
-
+;warehouse_c;myshowstore;
+  
 INSERT_UPDATE StockLevel;available;warehouse(code)[unique=true];inStockStatus(code);maxPreOrder;maxStockLevelHistoryCount;overSelling;preOrder;productCode[unique=true];reserved
+;100;warehouse_c;forceInStock;0;-1;0;0;Shoe1;0
+;100;warehouse_c;forceInStock;0;-1;0;0;Shoe2;0
+;100;warehouse_c;forceInStock;0;-1;0;0;Shoe3;0
+;100;warehouse_c;forceInStock;0;-1;0;0;Shoe4;0
+;100;warehouse_c;forceInStock;0;-1;0;0;Shoe5;0
+;100;warehouse_c;forceInStock;0;-1;0;0;Shoe6;0
+;100;warehouse_c;forceInStock;0;-1;0;0;Shoe7;0
+;100;warehouse_c;notSpecified;0;-1;0;0;Shoe8;0
+;100;warehouse_c;notSpecified;0;-1;0;0;Shoe9;0
 
+
+;100;warehouse_c;notSpecified;0;-1;0;0;Shoe1_L;0
+;100;warehouse_c;notSpecified;0;-1;0;0;Shoe1_XL;0
+;100;warehouse_c;notSpecified;0;-1;0;0;Shoe1_XXL;0
+;100;warehouse_c;notSpecified;0;-1;0;0;Shoe2_black;0
+;100;warehouse_c;notSpecified;0;-1;0;0;Shoe2_brown;0
+;100;warehouse_c;notSpecified;0;-1;0;0;Shoe2_grey;0
+
+#;100;warehouse_c;notSpecified;0;-1;0;0;0202;0
+#;100;warehouse_c;notSpecified;0;-1;0;0;0210;0
+#;100;warehouse_c;notSpecified;0;-1;0;0;0211;0
+#;100;warehouse_c;notSpecified;0;-1;0;0;0212;0
+  
 UPDATE Product;code[unique=true];$catalogVersion;stockLevels(productCode,warehouse(code));vendors(code)
+;Shoe1;;Shoe1:warehouse_c;myshowstore
+;Shoe2;;Shoe2:warehouse_c;myshowstore
+;Shoe3;;Shoe3:warehouse_c;myshowstore
+;Shoe4;;Shoe4:warehouse_c;myshowstore
+;Shoe5;;Shoe5:warehouse_c;myshowstore
+;Shoe6;;Shoe6:warehouse_c;myshowstore
+;Shoe7;;Shoe7:warehouse_c;myshowstore
+;Shoe8;;Shoe8:warehouse_c;myshowstore
+;Shoe9;;Shoe9:warehouse_c;myshowstore
+
+;Shoe1_L;;Shoe1_L:warehouse_c;myshowstore
+;Shoe1_XL;;Shoe1_XL:warehouse_c;myshowstore
+;Shoe1_XXL;;Shoe1_XXL:warehouse_c;myshowstore
+
+;Shoe2_black;;Shoe2_black:warehouse_c;myshowstore
+;Shoe2_brown;;Shoe2_brown:warehouse_c;myshowstore
+;Shoe2_grey;;Shoe2_grey:warehouse_c;myshowstore
+
+
+#;0102;;0102:warehouse_c;myshowstore
+#;0110;;0110:warehouse_c;myshowstore
+#;0111;;0111:warehouse_c;myshowstore
+#;0112;;0112:warehouse_c;myshowstore
+#;0200;;0200:warehouse_c;myshowstore
+#;0201;;0201:warehouse_c;myshowstore
+#;0202;;0202:warehouse_c;myshowstore
+#;0210;;0210:warehouse_c;myshowstore
+#;0211;;0211:warehouse_c;myshowstore
+#;0212;;0212:warehouse_c;myshowstore
+
+

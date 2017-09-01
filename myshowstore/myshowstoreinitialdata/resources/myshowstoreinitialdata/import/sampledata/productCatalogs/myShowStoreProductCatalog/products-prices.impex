@@ -1,22 +1,48 @@
-# -----------------------------------------------------------------------
-# [y] hybris Platform
-#
-# Copyright (c) 2017 SAP SE or an SAP affiliate company.  All rights reserved.
-#
-# This software is the confidential and proprietary information of SAP
-# ("Confidential Information"). You shall not disclose such Confidential
-# Information and shall use it only in accordance with the terms of the
-# license agreement you entered into with SAP.
-# -----------------------------------------------------------------------
-# ImpEx for Importing Prices
-
+# ImpEx for Importing Prices into Merchandise Store  
+"#% impex.setLocale( Locale.GERMAN )"
+   
 # Macros / Replacement Parameter definitions
-$productCatalog=__PRODUCT_CATALOG_NAME__
-
+$productCatalog=myshowstoreProductCatalog
+    
 $catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default='$productCatalog:Staged']
 $prices=Europe1prices[translator=de.hybris.platform.europe1.jalo.impex.Europe1PricesTranslator]
-
+$taxGroup=Europe1PriceFactory_PTG(code)[default=jp-vat-full]
+    
 # Set product approval status to Approved only for those products that have prices.
 $approved=approvalstatus(code)[default='approved']
-
-UPDATE Product;code[unique=true];$prices;$approved;$catalogVersion;Europe1PriceFactory_PTG(code)
+   
+UPDATE Product;code[unique=true];$prices;$approved;$catalogVersion;$taxGroup
+ ;Shoe1;5,00 GBP, 5,50 EUR, 7,48 USD, 765,33 JPY
+ ;Shoe2;2,50 GBP, 2,75 EUR, 3,74 USD, 382,66 JPY
+ ;Shoe3;5,00 GBP, 5,50 EUR, 7,48 USD, 765,33 JPY
+ ;Shoe4;10,00 GBP, 11,00 EUR, 14,96 USD, 1530,65 JPY
+ ;Shoe5;8,00 GBP, 10,00 EUR, 13,6 USD, 1391,50 JPY
+ ;Shoe6;18,00 GBP, 22,00 EUR, 29,92 USD, 3061,30 JPY
+ ;Shoe7;12,00 GBP, 15,00 EUR, 20,40 USD, 2087,25 JPY
+ ;Shoe8;20,00 GBP, 22,00 EUR, 29,92 USD, 3061,30 JPY
+ ;Shoe9;20,00 GBP, 22,00 EUR, 29,92 USD, 3061,30 JPY
+ 
+ ;Shoe1_L;55,00 GBP, 55,50 EUR, 57,48 USD, 765,33 JPY
+ ;Shoe1_XL;95,00 GBP, 65,50 EUR, 77,48 USD, 765,33 JPY
+ ;Shoe1_XXL;105,00 GBP, 95,50 EUR, 97,48 USD, 765,33 JPY
+ 
+ ;Shoe2_black;12,50 GBP, 12,75 EUR, 13,74 USD, 382,66 JPY
+ ;Shoe2_brown;22,50 GBP, 42,75 EUR, 43,74 USD, 382,66 JPY
+ ;Shoe2_grey;72,50 GBP, 72,75 EUR, 73,74 USD, 382,66 JPY
+ 
+ 
+  
+ #;0102;20,00 GBP, 22,00 EUR, 29,92 USD, 3061,30 JPY
+ #;0110;20,00 GBP, 22,00 EUR, 29,92 USD, 3061,30 JPY
+ #;0111;20,00 GBP, 22,00 EUR, 29,92 USD, 3061,30 JPY
+ #;0112;20,00 GBP, 22,00 EUR, 29,92 USD, 3061,30 JPY
+ #;0200;30,00 GBP, 33,00 EUR, 44,88 USD, 4591,95 JPY
+ #;0201;30,00 GBP, 33,00 EUR, 44,88 USD, 4591,95 JPY
+ #;0202;30,00 GBP, 33,00 EUR, 44,88 USD, 4591,95 JPY
+ #;0210;30,00 GBP, 33,00 EUR, 44,88 USD, 4591,95 JPY
+ #;0211;30,00 GBP, 33,00 EUR, 44,88 USD, 4591,95 JPY
+ #;0212;30,00 GBP, 33,00 EUR, 44,88 USD, 4591,95 JPY
+ 
+ 
+ 
+ 

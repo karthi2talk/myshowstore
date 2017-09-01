@@ -17,4 +17,4 @@ $lang=de
 
 # Create CMS Site
 UPDATE CMSSite;uid[unique=true];name[lang=$lang];locale[lang=$lang]
-;myShowStore;"myShowStore Site"
+;myshowstore;"myshowstore Site"

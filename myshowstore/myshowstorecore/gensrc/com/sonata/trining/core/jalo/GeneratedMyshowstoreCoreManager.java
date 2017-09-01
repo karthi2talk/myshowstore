@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at Aug 28, 2017 1:45:52 PM                     ---
+ * --- Generated at Aug 31, 2017 4:06:31 PM                     ---
  * ----------------------------------------------------------------
  */
 package com.sonata.trining.core.jalo;
@@ -11,6 +11,8 @@ import com.sonata.trining.core.jalo.ApparelProduct;
 import com.sonata.trining.core.jalo.ApparelSizeVariantProduct;
 import com.sonata.trining.core.jalo.ApparelStyleVariantProduct;
 import com.sonata.trining.core.jalo.ElectronicsColorVariantProduct;
+import com.sonata.trining.core.jalo.ShoeColorVariantProduct;
+import com.sonata.trining.core.jalo.ShoeSizeVariantProduct;
 import de.hybris.platform.jalo.Item;
 import de.hybris.platform.jalo.Item.AttributeMode;
 import de.hybris.platform.jalo.JaloBusinessException;
@@ -148,6 +150,58 @@ public abstract class GeneratedMyshowstoreCoreManager extends Extension
 	public ElectronicsColorVariantProduct createElectronicsColorVariantProduct(final Map attributeValues)
 	{
 		return createElectronicsColorVariantProduct( getSession().getSessionContext(), attributeValues );
+	}
+	
+	public ShoeColorVariantProduct createShoeColorVariantProduct(final SessionContext ctx, final Map attributeValues)
+	{
+		try
+		{
+			ComposedType type = getTenant().getJaloConnection().getTypeManager().getComposedType( MyshowstoreCoreConstants.TC.SHOECOLORVARIANTPRODUCT );
+			return (ShoeColorVariantProduct)type.newInstance( ctx, attributeValues );
+		}
+		catch( JaloGenericCreationException e)
+		{
+			final Throwable cause = e.getCause();
+			throw (cause instanceof RuntimeException ?
+			(RuntimeException)cause
+			:
+			new JaloSystemException( cause, cause.getMessage(), e.getErrorCode() ) );
+		}
+		catch( JaloBusinessException e )
+		{
+			throw new JaloSystemException( e ,"error creating ShoeColorVariantProduct : "+e.getMessage(), 0 );
+		}
+	}
+	
+	public ShoeColorVariantProduct createShoeColorVariantProduct(final Map attributeValues)
+	{
+		return createShoeColorVariantProduct( getSession().getSessionContext(), attributeValues );
+	}
+	
+	public ShoeSizeVariantProduct createShoeSizeVariantProduct(final SessionContext ctx, final Map attributeValues)
+	{
+		try
+		{
+			ComposedType type = getTenant().getJaloConnection().getTypeManager().getComposedType( MyshowstoreCoreConstants.TC.SHOESIZEVARIANTPRODUCT );
+			return (ShoeSizeVariantProduct)type.newInstance( ctx, attributeValues );
+		}
+		catch( JaloGenericCreationException e)
+		{
+			final Throwable cause = e.getCause();
+			throw (cause instanceof RuntimeException ?
+			(RuntimeException)cause
+			:
+			new JaloSystemException( cause, cause.getMessage(), e.getErrorCode() ) );
+		}
+		catch( JaloBusinessException e )
+		{
+			throw new JaloSystemException( e ,"error creating ShoeSizeVariantProduct : "+e.getMessage(), 0 );
+		}
+	}
+	
+	public ShoeSizeVariantProduct createShoeSizeVariantProduct(final Map attributeValues)
+	{
+		return createShoeSizeVariantProduct( getSession().getSessionContext(), attributeValues );
 	}
 	
 	@Override

@@ -4,7 +4,7 @@
 # ENGLISH LOCALIZATION
 #
 $lang=de
-$productCatalog=myShowStoreProductCatalog
+$productCatalog=myshowstoreProductCatalog
  
 UPDATE Catalog;id[unique=true];name[lang=$lang]
 ;$productCatalog;"hybris Product Catalog"

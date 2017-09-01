@@ -12,6 +12,22 @@
 
 # Insert Product taxes for US
 INSERT_UPDATE ProductTaxCode;productCode[unique=true];taxCode;taxArea[unique=true]
+;Shoe1;PC080601;US
+;Shoe2;PC080601;US
+;Shoe3;PC080601;US
+;Shoe4;PC080601;US
+;Shoe5;PC080601;US
+;Shoe6;PC080601;US
+;Shoe7;PC080601;US
+;Shoe8;PC080601;US
+;Shoe9;PC080601;US
+;Shoe1_L;PC080601;US
+;Shoe1_XL;PC080601;US
+;Shoe1_XXL;PC080601;US
+;Shoe2_black;PC080601;US
+;Shoe2_brown;PC080601;US
+;Shoe2_grey;PC080601;US
+
 
 # Insert Product taxes for JP
 INSERT_UPDATE ProductTaxCode;productCode[unique=true];taxCode;taxArea[unique=true]

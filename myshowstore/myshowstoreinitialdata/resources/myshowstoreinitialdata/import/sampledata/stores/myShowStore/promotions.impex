@@ -11,8 +11,8 @@
 # ImpEx for Promotions
 
 # Macros / Replacement Parameter definitions
-$productCatalog=__PRODUCT_CATALOG_NAME__
-$defaultPromoGrp=__DEFAULT_PROMO_GRP__
+$productCatalog=myshowstoreProductCatalog
+$defaultPromoGrp=myshowstorePromoGrp
 
 $favCustomers=favoriteCustomers
 $bigSpenders=bigSpenders

@@ -49,7 +49,7 @@ public class InitialDataSystemSetup extends AbstractSystemSetup
 	private CoreDataImportService coreDataImportService;
 	private SampleDataImportService sampleDataImportService;
 
-	private static final String SHOWSTORE = "myShowStore";
+	private static final String SHOWSTORE = "myshowstore";
 
 	/**
 	 * Generates the Dropdown and Multi-select boxes for the project data import

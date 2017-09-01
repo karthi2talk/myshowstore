@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at Aug 28, 2017 1:45:52 PM                     ---
+ * --- Generated at Aug 30, 2017 10:20:09 AM                    ---
  * ----------------------------------------------------------------
  */
 package com.sonata.trining.fulfilmentprocess.constants;

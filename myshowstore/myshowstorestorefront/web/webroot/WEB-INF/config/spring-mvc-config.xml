@@ -70,16 +70,23 @@
 	<util:list id="defaultBeforeControllerHandlersList" >
 		<!-- List of handlers to run -->
 		<bean class="com.sonata.trining.storefront.interceptors.beforecontroller.SecurityUserCheckBeforeControllerHandler" />
-		<bean class="com.sonata.trining.storefront.interceptors.beforecontroller.RequireHardLoginBeforeControllerHandler" >
+		<!-- <bean class="com.sonata.trining.storefront.interceptors.beforecontroller.RequireHardLoginBeforeControllerHandler" >
 				<property name="redirectStrategy" ref="redirectStrategy"/>
 				<property name="loginUrl" value="/login"/>
 				<property name="loginAndCheckoutUrl" value="/login/checkout"/>
 				<property name="requireHardLoginEvaluator" ref="requireHardLoginEvaluator"/>
-		</bean>
+		</bean> -->
 		<bean class="com.sonata.trining.storefront.interceptors.beforecontroller.DeviceDetectionBeforeControllerHandler" />
 		<bean class="com.sonata.trining.storefront.interceptors.beforecontroller.SetLanguageBeforeControllerHandler" />
 		<bean class="com.sonata.trining.storefront.interceptors.beforecontroller.SetUiExperienceBeforeControllerHandler" />
 		<bean class="com.sonata.trining.storefront.interceptors.beforecontroller.ThemeBeforeControllerHandler" />
+		<bean class="com.sonata.trining.storefront.interceptors.beforecontroller.RequireSiteHardLoginBeforeControllerHandler" >
+				<property name="redirectStrategy" ref="redirectStrategy"/>
+				<property name="loginUrl" value="/login"/>
+				<property name="loginControllerMethod" value="doLogin" />
+				<property name="loginAndCheckoutUrl" value="/login/checkout"/>
+				<property name="requireHardLoginEvaluator" ref="requireHardLoginEvaluator"/>
+		</bean>
 	</util:list>
 	
 	<alias name="defaultBeforeViewHandlersList" alias="beforeViewHandlersList" />

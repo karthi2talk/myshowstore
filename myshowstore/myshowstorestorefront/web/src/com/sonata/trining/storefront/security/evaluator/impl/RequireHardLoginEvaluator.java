@@ -14,7 +14,6 @@ import de.hybris.platform.acceleratorstorefrontcommons.constants.WebConstants;
 import de.hybris.platform.order.CartService;
 import de.hybris.platform.servicelayer.session.SessionService;
 import de.hybris.platform.servicelayer.user.UserService;
-import com.sonata.trining.storefront.security.evaluator.SecurityTraitEvaluator;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +23,8 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.web.util.CookieGenerator;
+
+import com.sonata.trining.storefront.security.evaluator.SecurityTraitEvaluator;
 
 
 public class RequireHardLoginEvaluator implements SecurityTraitEvaluator
@@ -151,5 +152,13 @@ public class RequireHardLoginEvaluator implements SecurityTraitEvaluator
 		}
 
 		return false;
+	}
+
+	/**
+	 * @return
+	 */
+	public boolean isAnonymousUser()
+	{
+		return getUserService().isAnonymousUser(getUserService().getCurrentUser());
 	}
 }

@@ -111,6 +111,26 @@
                 </attributes>
             </itemtype>
         </typegroup>
+        
+        <typegroup name="myshowstore">
+        	
+        	<itemtype code="ShoeColorVariantProduct" extends="VariantProduct" autocreate="true" generate="true">
+        		<attributes>
+        			<attribute type="localized:java.lang.String" qualifier="color">
+        				<persistence type="property"/>
+        			</attribute>
+        		</attributes>
+        	</itemtype>
+        	
+        	<itemtype code="ShoeSizeVariantProduct" extends="VariantProduct" autocreate="true" generate="true">
+        		<attributes>
+        			<attribute type="localized:java.lang.String" qualifier="size">
+        				<persistence type="property"/>
+        			</attribute>
+        		</attributes>
+        	</itemtype>
+        	
+        </typegroup>
 
     </itemtypes>
 </items>

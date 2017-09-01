@@ -15,8 +15,8 @@
 # Language
 $lang=en
 
-$storeUid=myShowStore
+$storeUid=myshowstore
 
 # Create Base Store
 UPDATE BaseStore;uid[unique=true];name[lang=$lang]
-;$storeUid;"My Show Store Store"
+;$storeUid;"My Show Store"

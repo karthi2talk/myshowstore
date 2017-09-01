@@ -555,4 +555,31 @@
 
 	<import resource="/myshowstorecore/processes/quote/quote-post-cancellation-process-spring.xml"/>
 	
+	
+	
+	
+	<!-- Custom changes -->
+	
+	
+	<bean id="myshowstoreCategorySource" parent="abstractCategorySource">
+	    <property name="rootCategory" value="1"/>
+	</bean>
+	 
+	<bean id="myshowstoreBrandCategorySource" parent="abstractCategorySource">
+	    <property name="rootCategory" value="brands"/>
+	</bean>
+	 
+	<bean id="myshowstoreCategoryCodeValueProvider" parent="abstractCategoryCodeValueProvider">
+	    <property name="categorySource" ref="myshowstoreCategorySource"/>
+	</bean>
+	<bean id="myshowstoreBrandCategoryCodeValueProvider" parent="abstractCategoryCodeValueProvider">
+	    <property name="categorySource" ref="myshowstoreBrandCategorySource"/>
+	</bean>
+	<bean id="myshowstoreCategoryNameValueProvider" parent="abstractCategoryNameValueProvider">
+	    <property name="categorySource" ref="myshowstoreCategorySource"/>
+	</bean>
+	<bean id="myshowstoreBrandCategoryNameValueProvider" parent="abstractCategoryNameValueProvider">
+	    <property name="categorySource" ref="myshowstoreBrandCategorySource"/>
+	</bean>
+	
 </beans>
