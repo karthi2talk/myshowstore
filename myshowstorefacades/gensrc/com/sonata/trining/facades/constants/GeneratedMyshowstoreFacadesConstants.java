@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at Aug 24, 2017 5:27:01 PM                     ---
+ * --- Generated at Sep 4, 2017 5:29:22 PM                      ---
  * ----------------------------------------------------------------
  */
 package com.sonata.trining.facades.constants;

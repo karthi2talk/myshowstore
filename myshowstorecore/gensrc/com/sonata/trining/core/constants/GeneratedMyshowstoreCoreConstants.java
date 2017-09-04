@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at Aug 24, 2017 5:27:01 PM                     ---
+ * --- Generated at Sep 4, 2017 5:29:22 PM                      ---
  * ----------------------------------------------------------------
  */
 package com.sonata.trining.core.constants;
@@ -20,11 +20,16 @@ public class GeneratedMyshowstoreCoreConstants
 		public static final String APPARELSIZEVARIANTPRODUCT = "ApparelSizeVariantProduct".intern();
 		public static final String APPARELSTYLEVARIANTPRODUCT = "ApparelStyleVariantProduct".intern();
 		public static final String ELECTRONICSCOLORVARIANTPRODUCT = "ElectronicsColorVariantProduct".intern();
+		public static final String SHOECOLORVARIANTPRODUCT = "ShoeColorVariantProduct".intern();
+		public static final String SHOESIZEVARIANTPRODUCT = "ShoeSizeVariantProduct".intern();
 		public static final String SWATCHCOLORENUM = "SwatchColorEnum".intern();
 	}
 	public static class Attributes
 	{
-		// no constants defined.
+		public static class Customer
+		{
+			public static final String LOYALITYPOINTS = "loyalityPoints".intern();
+		}
 	}
 	public static class Enumerations
 	{

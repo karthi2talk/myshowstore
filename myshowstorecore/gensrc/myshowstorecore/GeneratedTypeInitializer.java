@@ -86,6 +86,26 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 			false
 		);
 	
+		createItemType(
+			"ShoeColorVariantProduct",
+			"VariantProduct",
+			com.sonata.trining.core.jalo.ShoeColorVariantProduct.class,
+			null,
+			false,
+			null,
+			false
+		);
+	
+		createItemType(
+			"ShoeSizeVariantProduct",
+			"VariantProduct",
+			com.sonata.trining.core.jalo.ShoeSizeVariantProduct.class,
+			null,
+			false,
+			null,
+			false
+		);
+	
 		createEnumerationType(
 			"SwatchColorEnum",
 			null
@@ -125,6 +145,12 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 				single_createattr_ApparelSizeVariantProduct_size();
 			
 				single_createattr_ElectronicsColorVariantProduct_color();
+			
+				single_createattr_ShoeColorVariantProduct_color();
+			
+				single_createattr_ShoeSizeVariantProduct_size();
+			
+				single_createattr_Customer_loyalityPoints();
 			
 
 	}
@@ -210,6 +236,57 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 					"localized:java.lang.String",
 					de.hybris.platform.jalo.type.AttributeDescriptor.READ_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.WRITE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.OPTIONAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.REMOVE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.SEARCH_FLAG,
 					"VariantAttributeDescriptor",
+					sqlColumnDefinitions
+				);
+			
+	}
+	
+	public void single_createattr_ShoeColorVariantProduct_color() throws JaloBusinessException
+	{
+		
+						Map sqlColumnDefinitions = null;
+					
+				createPropertyAttribute(
+					"ShoeColorVariantProduct", 
+					"color",  
+					null,
+					"localized:java.lang.String",
+					de.hybris.platform.jalo.type.AttributeDescriptor.READ_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.WRITE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.OPTIONAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.REMOVE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.SEARCH_FLAG,
+					null,
+					sqlColumnDefinitions
+				);
+			
+	}
+	
+	public void single_createattr_ShoeSizeVariantProduct_size() throws JaloBusinessException
+	{
+		
+						Map sqlColumnDefinitions = null;
+					
+				createPropertyAttribute(
+					"ShoeSizeVariantProduct", 
+					"size",  
+					null,
+					"localized:java.lang.String",
+					de.hybris.platform.jalo.type.AttributeDescriptor.READ_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.WRITE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.OPTIONAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.REMOVE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.SEARCH_FLAG,
+					null,
+					sqlColumnDefinitions
+				);
+			
+	}
+	
+	public void single_createattr_Customer_loyalityPoints() throws JaloBusinessException
+	{
+		
+						Map sqlColumnDefinitions = null;
+					
+				createPropertyAttribute(
+					"Customer", 
+					"loyalityPoints",  
+					null,
+					"java.lang.Integer",
+					de.hybris.platform.jalo.type.AttributeDescriptor.READ_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.WRITE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.OPTIONAL_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.REMOVE_FLAG|de.hybris.platform.jalo.type.AttributeDescriptor.SEARCH_FLAG,
+					null,
 					sqlColumnDefinitions
 				);
 			
@@ -307,6 +384,48 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 				}
 			
 			single_setAttributeProperties_ElectronicsColorVariantProduct_color();
+		
+				{
+				Map customPropsMap = new HashMap();
+				
+				setItemTypeProperties(
+					"ShoeColorVariantProduct",
+					false,
+					true,
+					true,
+					null,
+					customPropsMap
+				);
+				}
+			
+			single_setAttributeProperties_ShoeColorVariantProduct_color();
+		
+				{
+				Map customPropsMap = new HashMap();
+				
+				setItemTypeProperties(
+					"ShoeSizeVariantProduct",
+					false,
+					true,
+					true,
+					null,
+					customPropsMap
+				);
+				}
+			
+			single_setAttributeProperties_ShoeSizeVariantProduct_size();
+		
+				{
+				Map customPropsMap = new HashMap();
+				
+				changeMetaType(
+					"Customer",
+					null,
+					customPropsMap
+				);
+				}
+			
+			single_setAttributeProperties_Customer_loyalityPoints();
 		
 				setDefaultProperties(
 					"GenderList",
@@ -438,6 +557,72 @@ public class GeneratedTypeInitializer extends AbstractTypeInitializer
 								true,
 								true,
 								"VariantAttributeDescriptor",
+								customPropsMap,
+								null
+							);
+						}
+					
+						public void single_setAttributeProperties_ShoeColorVariantProduct_color() throws JaloBusinessException
+						{
+							
+							
+							
+							Map customPropsMap = new HashMap();
+							
+							setAttributeProperties(
+								"ShoeColorVariantProduct", 
+								"color",
+								false, 
+								null,
+								null,
+								null,
+								true,
+								true,
+								null,
+								customPropsMap,
+								null
+							);
+						}
+					
+						public void single_setAttributeProperties_ShoeSizeVariantProduct_size() throws JaloBusinessException
+						{
+							
+							
+							
+							Map customPropsMap = new HashMap();
+							
+							setAttributeProperties(
+								"ShoeSizeVariantProduct", 
+								"size",
+								false, 
+								null,
+								null,
+								null,
+								true,
+								true,
+								null,
+								customPropsMap,
+								null
+							);
+						}
+					
+						public void single_setAttributeProperties_Customer_loyalityPoints() throws JaloBusinessException
+						{
+							
+							
+							
+							Map customPropsMap = new HashMap();
+							
+							setAttributeProperties(
+								"Customer", 
+								"loyalityPoints",
+								false, 
+								null,
+								null,
+								null,
+								true,
+								true,
+								null,
 								customPropsMap,
 								null
 							);
