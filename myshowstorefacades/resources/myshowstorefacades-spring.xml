@@ -190,4 +190,15 @@
 	</bean>
 
 	<bean id="genderData" class="com.sonata.trining.facades.product.data.GenderData" scope="prototype"/>
+	
+	
+	<!-- Custom modifications -->
+	
+	<bean name="showCustomerPopulator" class="com.sonata.trining.facades.populators.ShowCustomerPopulator" />
+	
+	<bean parent="modifyPopulatorList">
+        <property name="list" ref="customerConverter"/>
+        <property name="add"  ref="showCustomerPopulator"/>
+    </bean>
+	
 </beans>

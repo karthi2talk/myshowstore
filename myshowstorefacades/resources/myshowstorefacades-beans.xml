@@ -19,4 +19,10 @@
 		<property name="code" type="String"/>
 		<property name="name" type="String"/>
 	</bean>
+	
+	<bean class="de.hybris.platform.commercefacades.user.data.CustomerData">
+		<property name="loyalityPoints" type="Integer"/>
+	</bean>
+	
+	
 </beans>

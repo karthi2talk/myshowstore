@@ -357,4 +357,6 @@
 		<property name="cmsSiteService" ref="cmsSiteService"/>
 		<property name="defaultTheme" value="blue"/>
 	</bean>
+	
+	<bean name="pointsPaymentValidator" class="com.sonata.training.storefront.controllers.form.validation.PointsPaymentValidator"/>
 </beans>
