@@ -134,7 +134,7 @@
 			<itemtype code="Customer" autocreate="false" generate="false">
 				<description>Extending Customer type with additional attributes.</description>
 				<attributes>
-					<attribute autocreate="true" qualifier="loyalityPoints" type="java.lang.Integer">
+					<attribute autocreate="true" qualifier="loyaltyPoints" type="java.lang.Integer">
 						<modifiers read="true" write="true" search="true"
 							optional="true" />
 						<persistence type="property" />
@@ -145,11 +145,18 @@
         	<itemtype code="AbstractOrder" autocreate="false" generate="false">
 				<description>Extending AbstractOrder type with additional attributes.</description>
 				<attributes>
-					<attribute autocreate="true" qualifier="loyalityPoints" type="java.lang.Integer">
+					<attribute autocreate="true" qualifier="loyaltyPoints" type="java.lang.Integer">
 						<modifiers read="true" write="true" search="true"
 							optional="true" />
 						<persistence type="property" />
 					</attribute>
+					<attribute autocreate="true" qualifier="revisedTotal" type="java.lang.Double">
+						<description>This value holds the subtracted points value from Total</description>
+						<modifiers read="true" write="true" search="true"
+							optional="true" />
+						<persistence type="dynamic" attributeHandler="revisedTotalAttributeHandler" />
+					</attribute>
+					
 				</attributes>
         	</itemtype>
         </typegroup>

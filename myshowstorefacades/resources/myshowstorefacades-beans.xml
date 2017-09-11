@@ -21,7 +21,12 @@
 	</bean>
 	
 	<bean class="de.hybris.platform.commercefacades.user.data.CustomerData">
-		<property name="loyalityPoints" type="Integer"/>
+		<property name="loyaltyPoints" type="Integer"/>
+	</bean>
+	
+	<bean class="de.hybris.platform.commercefacades.order.data.AbstractOrderData">
+		<property name="loyaltyPoints" type="java.lang.Integer"/>
+		<property name="revisedTotal" type="de.hybris.platform.commercefacades.product.data.PriceData"/>
 	</bean>
 	
 	

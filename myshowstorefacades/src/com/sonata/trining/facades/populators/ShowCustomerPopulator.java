@@ -22,7 +22,7 @@ public class ShowCustomerPopulator implements Populator<CustomerModel, CustomerD
 
 		if (source != null)
 		{
-			target.setLoyalityPoints(source.getLoyalityPoints());
+			target.setLoyaltyPoints(source.getLoyaltyPoints());
 		}
 	}
 

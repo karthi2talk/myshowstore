@@ -226,6 +226,7 @@
 				<entry key="REDIRECT_TO_POINTS_PAYMENT" value-ref="REDIRECT_TO_POINTS_PAYMENT"/>
 				<entry key="REDIRECT_TO_PAYMENT_METHOD" value-ref="REDIRECT_TO_PAYMENT_METHOD"/>
 				<entry key="REDIRECT_TO_DELIVERY_METHOD" value-ref="REDIRECT_TO_DELIVERY_METHOD"/>
+				<entry key="REDIRECT_TO_SUMMARY" value-ref="REDIRECT_TO_SUMMARY"/>
 			</map>
 		</property>
 		<property name="checkoutProgressBar">
@@ -325,10 +326,15 @@
 	<bean id="defaultMultiStepCheckoutValidator" class="com.sonata.trining.storefront.checkout.steps.validation.impl.DefaultMultiStepCheckoutStepValidator" parent="abstractCheckoutStepValidator" />
 	<bean id="deliveryAddressCheckoutValidator" class="com.sonata.trining.storefront.checkout.steps.validation.impl.DefaultDeliveryAddressCheckoutStepValidator" parent="abstractCheckoutStepValidator" />
 	<bean id="deliveryMethodCheckoutValidator" class="com.sonata.trining.storefront.checkout.steps.validation.impl.DefaultDeliveryMethodCheckoutStepValidator" parent="abstractCheckoutStepValidator" />
-	<bean id="defaultPointsPaymentCheckoutValidator" class="com.sonata.trining.storefront.checkout.steps.validation.impl.DefaultPointsPaymentCheckoutStepValidator" parent="abstractCheckoutStepValidator" />
-	<bean id="defaultPaymentMethodCheckoutValidator" class="com.sonata.trining.storefront.checkout.steps.validation.impl.DefaultPaymentCheckoutStepValidator" parent="abstractCheckoutStepValidator" />
+	<bean id="defaultPointsPaymentCheckoutValidator" class="com.sonata.trining.storefront.checkout.steps.validation.impl.DefaultPointsPaymentCheckoutStepValidator" parent="abstractCheckoutStepValidator" >
+	</bean>
+	<bean id="defaultPaymentMethodCheckoutValidator" class="com.sonata.trining.storefront.checkout.steps.validation.impl.DefaultPaymentCheckoutStepValidator" parent="abstractCheckoutStepValidator" >
+		<property name="showCheckoutFacade" ref="showCheckoutFacade"/>
+	</bean>
 	<bean id="defaultPickupCheckoutValidator" class="com.sonata.trining.storefront.checkout.steps.validation.impl.DefaultPickupCheckoutStepValidator" parent="abstractCheckoutStepValidator" />
-	<bean id="defaultSummaryCheckoutValidator" class="com.sonata.trining.storefront.checkout.steps.validation.impl.DefaultSummaryCheckoutStepValidator" parent="abstractCheckoutStepValidator" />
+	<bean id="defaultSummaryCheckoutValidator" class="com.sonata.trining.storefront.checkout.steps.validation.impl.DefaultSummaryCheckoutStepValidator" parent="abstractCheckoutStepValidator" >
+		<property name="showCheckoutFacade" ref="showCheckoutFacade"/>
+	</bean>
 
 	<!-- <bean id="defaultResponsiveMultiStepCheckoutValidator" class="com.sonata.trining.storefront.checkout.steps.validation.impl.ResponsiveMultiStepCheckoutStepValidator" parent="abstractCheckoutStepValidator" />
 	<bean id="defaultResponsiveDeliveryAddressCheckoutValidator" class="com.sonata.trining.storefront.checkout.steps.validation.impl.ResponsiveDeliveryAddressCheckoutStepValidator" parent="abstractCheckoutStepValidator" />

@@ -582,4 +582,7 @@
 	    <property name="categorySource" ref="myshowstoreBrandCategorySource"/>
 	</bean>
 	
+	
+	<bean id="revisedTotalAttributeHandler" class="com.sonata.training.core.handler.RevisedTotoalAttributeHandler"></bean>
+	
 </beans>
