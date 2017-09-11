@@ -17,10 +17,14 @@ import de.hybris.platform.acceleratorstorefrontcommons.controllers.util.GlobalMe
 import org.apache.log4j.Logger;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.sonata.training.facades.checkout.ShowCheckoutFacade;
+
 
 public class DefaultPaymentCheckoutStepValidator extends AbstractCheckoutStepValidator
 {
 	private static final Logger LOGGER = Logger.getLogger(DefaultPaymentCheckoutStepValidator.class);
+
+	private ShowCheckoutFacade showCheckoutFacade;
 
 	@Override
 	public ValidationResults validateOnEnter(final RedirectAttributes redirectAttributes)
@@ -38,12 +42,33 @@ public class DefaultPaymentCheckoutStepValidator extends AbstractCheckoutStepVal
 			return ValidationResults.REDIRECT_TO_DELIVERY_ADDRESS;
 		}
 
+		if (showCheckoutFacade.hasCompletelyPaidByPoints()) // SKIPPING PAYEMNT SECTION IF PAYMENT IS COMPLETELY MADE BY POINTS.
+		{
+			return ValidationResults.REDIRECT_TO_SUMMARY;
+		}
+
+
 		if (getCheckoutFlowFacade().hasNoDeliveryMode())
 		{
 			GlobalMessages.addFlashMessage(redirectAttributes, GlobalMessages.INFO_MESSAGES_HOLDER,
 					"checkout.multi.deliveryMethod.notprovided");
 			return ValidationResults.REDIRECT_TO_DELIVERY_METHOD;
 		}
+
 		return ValidationResults.SUCCESS;
+	}
+
+	public ShowCheckoutFacade getShowCheckoutFacade()
+	{
+		return showCheckoutFacade;
+	}
+
+	/**
+	 * @param showCheckoutFacade
+	 *           the showCheckoutFacade to set
+	 */
+	public void setShowCheckoutFacade(final ShowCheckoutFacade showCheckoutFacade)
+	{
+		this.showCheckoutFacade = showCheckoutFacade;
 	}
 }

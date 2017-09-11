@@ -28,10 +28,10 @@ import de.hybris.platform.commercefacades.product.data.ProductData;
 import de.hybris.platform.commerceservices.order.CommerceCartModificationException;
 import de.hybris.platform.order.InvalidCartException;
 import de.hybris.platform.payment.AdapterException;
-import com.sonata.trining.storefront.controllers.ControllerConstants;
 
 import java.util.Arrays;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
@@ -43,6 +43,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.sonata.training.facades.checkout.ShowCheckoutFacade;
+import com.sonata.trining.storefront.controllers.ControllerConstants;
+
 
 @Controller
 @RequestMapping(value = "/checkout/multi/summary")
@@ -51,6 +54,9 @@ public class SummaryCheckoutStepController extends AbstractCheckoutStepControlle
 	private static final Logger LOGGER = Logger.getLogger(SummaryCheckoutStepController.class);
 
 	private static final String SUMMARY = "summary";
+
+	@Resource
+	private ShowCheckoutFacade showCheckoutFacade;
 
 	@RequestMapping(value = "/view", method = RequestMethod.GET)
 	@RequireHardLogIn
@@ -118,7 +124,15 @@ public class SummaryCheckoutStepController extends AbstractCheckoutStepControlle
 		boolean isPaymentUthorized = false;
 		try
 		{
-			isPaymentUthorized = getCheckoutFacade().authorizePayment(placeOrderForm.getSecurityCode());
+			final boolean dontCarePayment = showCheckoutFacade.hasCompletelyPaidByPoints();
+			if (!dontCarePayment)
+			{
+				isPaymentUthorized = getCheckoutFacade().authorizePayment(placeOrderForm.getSecurityCode());
+			}
+			else
+			{
+				isPaymentUthorized = dontCarePayment;
+			}
 		}
 		catch (final AdapterException ae)
 		{

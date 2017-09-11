@@ -26,7 +26,7 @@
 	<tfoot>
 	<tr>
 		<td>
-			<spring:theme code="basket.page.totals.total"/>
+			<spring:theme code="basket.page.totals.total"/> 
 		</td>
 		<td>
 			<ycommerce:testId code="cart_totalPrice_label">
@@ -42,6 +42,29 @@
 			</ycommerce:testId>
 		</td>
 	</tr>
+	<%-- <c:if test="${not empty cartData.loyaltyPoints and cartData.loyaltyPoints>0}"> --%>
+		<tr>
+			<td>
+				<spring:theme code="basket.page.points.paid"/> 
+			</td>
+			<td>
+				<ycommerce:testId code="Order_Totals_Subtotal">
+							<c:out value="${cartData.loyaltyPoints}" />
+				</ycommerce:testId>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+				<spring:theme code="basket.page.totals.revisedTotal"/> 
+			</td>
+			<td>
+				<ycommerce:testId code="Order_Totals_Subtotal">
+							<format:price priceData="${cartData.revisedTotal}"/>
+				</ycommerce:testId>
+			</td>
+		</tr>
+	<%-- </c:if> --%>
 	</tfoot>
 	<tbody>
 	<tr>
@@ -71,7 +94,7 @@
 	<c:if test="${not empty cartData.deliveryCost}">
 		<tr>
 			<td>
-				<spring:theme code="basket.page.totals.delivery"/>
+				<spring:theme code="basket.page.totals.delivery"/>44
 			</td>
 			<td>
 				<format:price priceData="${cartData.deliveryCost}" displayFreeForZero="TRUE"/>
@@ -89,6 +112,8 @@
 			</td>
 		</tr>
 	</c:if>
+	
+		<!-- Used Loyalty Points -->
 	<cart:taxExtimate cartData="${cartData}" showTaxEstimate="${showTaxEstimate}"/>
 	</tbody>
 </table>

@@ -10,36 +10,50 @@
  */
 package com.sonata.trining.storefront.checkout.steps.validation.impl;
 
+import de.hybris.platform.acceleratorstorefrontcommons.checkout.steps.validation.AbstractCheckoutStepValidator;
 import de.hybris.platform.acceleratorstorefrontcommons.checkout.steps.validation.ValidationResults;
 import de.hybris.platform.acceleratorstorefrontcommons.controllers.util.GlobalMessages;
 import de.hybris.platform.commercefacades.order.data.CartData;
-import de.hybris.platform.acceleratorstorefrontcommons.checkout.steps.validation.AbstractCheckoutStepValidator;
 
 import org.apache.log4j.Logger;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.sonata.training.facades.checkout.ShowCheckoutFacade;
+
 
 public class DefaultSummaryCheckoutStepValidator extends AbstractCheckoutStepValidator
 {
+
+
 	private static final Logger LOGGER = Logger.getLogger(DefaultSummaryCheckoutStepValidator.class);
+
+	private ShowCheckoutFacade showCheckoutFacade;
 
 	@Override
 	public ValidationResults validateOnEnter(final RedirectAttributes redirectAttributes)
 	{
 		final ValidationResults cartResult = checkCartAndDelivery(redirectAttributes);
-		if (cartResult != null) {
+		if (cartResult != null)
+		{
 			return cartResult;
 		}
 
 		final ValidationResults paymentResult = checkPaymentMethodAndPickup(redirectAttributes);
-		if (paymentResult != null) {
+		if (paymentResult != null)
+		{
 			return paymentResult;
 		}
 
 		return ValidationResults.SUCCESS;
 	}
 
-	protected ValidationResults checkPaymentMethodAndPickup(final RedirectAttributes redirectAttributes) {
+	protected ValidationResults checkPaymentMethodAndPickup(final RedirectAttributes redirectAttributes)
+	{
+		if (showCheckoutFacade.hasCompletelyPaidByPoints()) // REDIRECTING TO SUMMARY INFO SECTION IF PAYMENT IS COMPLETELY MADE BY POINTS.
+		{
+			return null;
+		}
+
 		if (getCheckoutFlowFacade().hasNoPaymentInfo())
 		{
 			GlobalMessages.addFlashMessage(redirectAttributes, GlobalMessages.INFO_MESSAGES_HOLDER,
@@ -58,10 +72,13 @@ public class DefaultSummaryCheckoutStepValidator extends AbstractCheckoutStepVal
 		{
 			return ValidationResults.REDIRECT_TO_PICKUP_LOCATION;
 		}
+
+
 		return null;
 	}
 
-	protected ValidationResults checkCartAndDelivery(final RedirectAttributes redirectAttributes) {
+	protected ValidationResults checkCartAndDelivery(final RedirectAttributes redirectAttributes)
+	{
 		if (!getCheckoutFlowFacade().hasValidCart())
 		{
 			LOGGER.info("Missing, empty or unsupported cart");
@@ -82,5 +99,22 @@ public class DefaultSummaryCheckoutStepValidator extends AbstractCheckoutStepVal
 			return ValidationResults.REDIRECT_TO_DELIVERY_METHOD;
 		}
 		return null;
+	}
+
+	/**
+	 * @return the showCheckoutFacade
+	 */
+	public ShowCheckoutFacade getShowCheckoutFacade()
+	{
+		return showCheckoutFacade;
+	}
+
+	/**
+	 * @param showCheckoutFacade
+	 *           the showCheckoutFacade to set
+	 */
+	public void setShowCheckoutFacade(final ShowCheckoutFacade showCheckoutFacade)
+	{
+		this.showCheckoutFacade = showCheckoutFacade;
 	}
 }

@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at Sep 5, 2017 5:55:38 PM                      ---
+ * --- Generated at Sep 11, 2017 3:05:40 PM                     ---
  * ----------------------------------------------------------------
  */
 package com.sonata.trining.initialdata.constants;

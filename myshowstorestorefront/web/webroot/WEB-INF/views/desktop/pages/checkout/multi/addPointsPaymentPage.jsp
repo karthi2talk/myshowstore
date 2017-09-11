@@ -30,7 +30,7 @@
 
 			<form:form method="post" commandName="pointsPaymentDetailsForm" class="create_update_payment_form" >
 				<div class="cardForm">
-					<span>AVailable Loyality Points : ${user.loyalityPoints} </span>
+					<span>AVailable Loyality Points : ${user.loyaltyPoints} </span>
 					<formElement:formInputBox idKey="loyaltyPoints" labelKey="payment.loyaltyPoints" path="points" inputCSS="text" mandatory="false" tabindex="1"/>
 					
 						<button class="positive" tabindex="2" id="lastInTheForm" type="submit">

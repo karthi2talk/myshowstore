@@ -36,6 +36,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.sonata.training.facades.checkout.ShowCheckoutFacade;
 import com.sonata.training.storefront.controllers.form.PointsPaymentDetailsForm;
 import com.sonata.training.storefront.controllers.form.validation.PointsPaymentValidator;
 import com.sonata.trining.storefront.controllers.ControllerConstants;
@@ -53,6 +54,9 @@ public class PointsPaymentCheckoutStepController extends AbstractCheckoutStepCon
 
 	@Resource(name = "pointsPaymentValidator")
 	private PointsPaymentValidator pointsPaymentValidator;
+
+	@Resource(name = "showCheckoutFacade")
+	private ShowCheckoutFacade showCheckoutFacade;
 
 
 
@@ -86,15 +90,18 @@ public class PointsPaymentCheckoutStepController extends AbstractCheckoutStepCon
 		pointsPaymentValidator.validate(pointsPaymentDetailsForm, bindingResult);
 		setupPointsPaymentPage(model);
 
-		final CartData cartData = getCheckoutFacade().getCheckoutCart();
-		model.addAttribute(CART_DATA_ATTR, cartData);
-
 		if (bindingResult.hasErrors())
 		{
 			GlobalMessages.addErrorMessage(model, "checkout.error.pointsPaymentethod.formentry.invalid");
 			return ControllerConstants.Views.Pages.MultiStepCheckout.AddPointsPaymentPage;
 		}
+
+		showCheckoutFacade.addLoyaltyPoints(pointsPaymentDetailsForm.getPoints());
+		final CartData cartData = getCheckoutFacade().getCheckoutCart();
+
 		setCheckoutStepLinksForModel(model, getCheckoutStep());
+
+		model.addAttribute(CART_DATA_ATTR, cartData);
 
 		return getCheckoutStep().nextStep();
 	}

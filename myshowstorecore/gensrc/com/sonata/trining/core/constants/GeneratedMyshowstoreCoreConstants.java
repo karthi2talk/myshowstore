@@ -1,7 +1,7 @@
 /*
  * ----------------------------------------------------------------
  * --- WARNING: THIS FILE IS GENERATED AND WILL BE OVERWRITTEN! ---
- * --- Generated at Sep 5, 2017 5:55:38 PM                      ---
+ * --- Generated at Sep 11, 2017 3:05:40 PM                     ---
  * ----------------------------------------------------------------
  */
 package com.sonata.trining.core.constants;
@@ -28,11 +28,12 @@ public class GeneratedMyshowstoreCoreConstants
 	{
 		public static class AbstractOrder
 		{
-			public static final String LOYALITYPOINTS = "loyalityPoints".intern();
+			public static final String LOYALTYPOINTS = "loyaltyPoints".intern();
+			public static final String REVISEDTOTAL = "revisedTotal".intern();
 		}
 		public static class Customer
 		{
-			public static final String LOYALITYPOINTS = "loyalityPoints".intern();
+			public static final String LOYALTYPOINTS = "loyaltyPoints".intern();
 		}
 	}
 	public static class Enumerations

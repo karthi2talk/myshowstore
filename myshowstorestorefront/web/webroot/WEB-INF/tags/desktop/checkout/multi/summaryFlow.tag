@@ -15,4 +15,6 @@
 	<multi-checkout:summaryFlowDeliveryMode deliveryMode="${deliveryMode}" cartData="${cartData}" />
 	<hr>
 	<multi-checkout:summaryFlowPayment paymentInfo="${paymentInfo}" requestSecurityCode="${requestSecurityCode}"/>
+	<hr>
+	<multi-checkout:summaryFlowPointsPaymentInfo cartData="${cartData}" />
 </div>

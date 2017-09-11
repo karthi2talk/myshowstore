@@ -37,7 +37,7 @@ public class PointsPaymentValidator implements Validator
 		final PointsPaymentDetailsForm form = (PointsPaymentDetailsForm) object;
 		final CustomerData customer = customerFacade.getCurrentCustomer();
 
-		if (form.getPoints() > customer.getLoyalityPoints())
+		if (form.getPoints() != null && form.getPoints() > customer.getLoyaltyPoints())
 		{
 			errors.rejectValue("points", "payment.points.invalid");
 		}
