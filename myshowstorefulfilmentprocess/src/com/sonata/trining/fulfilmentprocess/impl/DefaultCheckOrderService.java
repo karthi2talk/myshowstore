@@ -12,6 +12,7 @@ package com.sonata.trining.fulfilmentprocess.impl;
 
 import de.hybris.platform.core.model.order.AbstractOrderEntryModel;
 import de.hybris.platform.core.model.order.OrderModel;
+
 import com.sonata.trining.fulfilmentprocess.CheckOrderService;
 
 
@@ -24,6 +25,7 @@ public class DefaultCheckOrderService implements CheckOrderService
 	@Override
 	public boolean check(final OrderModel order)
 	{
+		final boolean dontCarePayment = order.getRevisedTotal().doubleValue() <= 0;
 		if (!order.getCalculated().booleanValue())
 		{
 			// Order must be calculated
@@ -34,7 +36,8 @@ public class DefaultCheckOrderService implements CheckOrderService
 			// Order must have some lines
 			return false;
 		}
-		else if (order.getPaymentInfo() == null)
+		// TODO KARTHI  IF PAYMENT WAS COMPLETELY MADE BY POINTS THEN SET
+		else if (order.getPaymentInfo() == null && !dontCarePayment)
 		{
 			// Order must have some payment info to use in the process
 			return false;
@@ -50,7 +53,7 @@ public class DefaultCheckOrderService implements CheckOrderService
 	{
 		if (order.getDeliveryMode() == null)
 		{
-			// Order must have an overall delivery mode 
+			// Order must have an overall delivery mode
 			return false;
 		}
 

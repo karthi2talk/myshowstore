@@ -12,7 +12,7 @@
 		
 			<strong>Loyalty Points</strong>
 			<ul>
-				<li><spring:theme code="basket.page.points.paid" htmlEscape="false"/>&nbsp;&nbsp;  ${fn:escapeXml(cart.loyaltyPoints)}</li>
+				<li><spring:theme code="basket.page.points.paid" htmlEscape="false"/>:&nbsp;&nbsp;  ${fn:escapeXml(cartData.loyaltyPoints)}</li>
 			</ul>
 		
 	</ycommerce:testId>

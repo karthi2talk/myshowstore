@@ -3,6 +3,10 @@
  */
 package com.sonata.training.facades.checkout;
 
+import de.hybris.platform.commercefacades.order.data.OrderData;
+import de.hybris.platform.order.InvalidCartException;
+
+
 /**
  * @author karthi.m
  *
@@ -19,6 +23,12 @@ public interface ShowCheckoutFacade
 	 * @return
 	 */
 	boolean hasCompletelyPaidByPoints();
+
+	/**
+	 * @return
+	 */
+	OrderData placeShoeOrder() throws InvalidCartException;
+
 
 
 

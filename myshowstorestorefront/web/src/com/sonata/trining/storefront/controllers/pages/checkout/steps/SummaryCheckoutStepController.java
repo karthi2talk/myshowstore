@@ -108,7 +108,9 @@ public class SummaryCheckoutStepController extends AbstractCheckoutStepControlle
 			final HttpServletRequest request, final RedirectAttributes redirectModel) throws CMSItemNotFoundException, // NOSONAR
 			InvalidCartException, CommerceCartModificationException
 	{
-		if (validateOrderForm(placeOrderForm, model))
+
+		final boolean dontCarePayment = showCheckoutFacade.hasCompletelyPaidByPoints();
+		if (validateOrderForm(placeOrderForm, model, dontCarePayment))
 		{
 			return enterStep(model, redirectModel);
 		}
@@ -124,7 +126,7 @@ public class SummaryCheckoutStepController extends AbstractCheckoutStepControlle
 		boolean isPaymentUthorized = false;
 		try
 		{
-			final boolean dontCarePayment = showCheckoutFacade.hasCompletelyPaidByPoints();
+
 			if (!dontCarePayment)
 			{
 				isPaymentUthorized = getCheckoutFacade().authorizePayment(placeOrderForm.getSecurityCode());
@@ -148,7 +150,7 @@ public class SummaryCheckoutStepController extends AbstractCheckoutStepControlle
 		final OrderData orderData;
 		try
 		{
-			orderData = getCheckoutFacade().placeOrder();
+			orderData = showCheckoutFacade.placeShoeOrder();
 		}
 		catch (final Exception e)
 		{
@@ -169,7 +171,7 @@ public class SummaryCheckoutStepController extends AbstractCheckoutStepControlle
 	 *           A spring Model
 	 * @return True if the order form is invalid and false if everything is valid.
 	 */
-	protected boolean validateOrderForm(final PlaceOrderForm placeOrderForm, final Model model)
+	protected boolean validateOrderForm(final PlaceOrderForm placeOrderForm, final Model model, final boolean dontCarePayment)
 	{
 		final String securityCode = placeOrderForm.getSecurityCode();
 		boolean invalid = false;
@@ -186,7 +188,7 @@ public class SummaryCheckoutStepController extends AbstractCheckoutStepControlle
 			invalid = true;
 		}
 
-		if (getCheckoutFlowFacade().hasNoPaymentInfo())
+		if (getCheckoutFlowFacade().hasNoPaymentInfo() && !dontCarePayment)
 		{
 			GlobalMessages.addErrorMessage(model, "checkout.paymentMethod.notSelected");
 			invalid = true;

@@ -49,7 +49,7 @@ public class DefaultSummaryCheckoutStepValidator extends AbstractCheckoutStepVal
 
 	protected ValidationResults checkPaymentMethodAndPickup(final RedirectAttributes redirectAttributes)
 	{
-		if (showCheckoutFacade.hasCompletelyPaidByPoints()) // REDIRECTING TO SUMMARY INFO SECTION IF PAYMENT IS COMPLETELY MADE BY POINTS.
+		if (showCheckoutFacade.hasCompletelyPaidByPoints()) //TODO KARTHI REDIRECTING TO SUMMARY INFO SECTION IF PAYMENT IS COMPLETELY MADE BY POINTS.
 		{
 			return null;
 		}

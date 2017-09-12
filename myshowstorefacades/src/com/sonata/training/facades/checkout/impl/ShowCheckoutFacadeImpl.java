@@ -7,6 +7,7 @@ import de.hybris.platform.commercefacades.order.data.OrderData;
 import de.hybris.platform.commercefacades.order.impl.DefaultCheckoutFacade;
 import de.hybris.platform.core.model.order.CartModel;
 import de.hybris.platform.core.model.order.OrderModel;
+import de.hybris.platform.core.model.user.CustomerModel;
 import de.hybris.platform.order.InvalidCartException;
 
 import com.sonata.training.facades.checkout.ShowCheckoutFacade;
@@ -52,7 +53,7 @@ public class ShowCheckoutFacadeImpl extends DefaultCheckoutFacade implements Sho
 
 
 	@Override
-	public OrderData placeOrder() throws InvalidCartException
+	public OrderData placeShoeOrder() throws InvalidCartException
 	{
 		final CartModel cartModel = getCart();
 		if (cartModel != null)
@@ -61,6 +62,7 @@ public class ShowCheckoutFacadeImpl extends DefaultCheckoutFacade implements Sho
 			{
 				beforePlaceOrder(cartModel);
 				final OrderModel orderModel = placeOrder(cartModel);
+				setCustomerLoyaltyPoints(orderModel);
 				afterPlaceOrder(cartModel, orderModel);
 				if (orderModel != null)
 				{
@@ -69,6 +71,23 @@ public class ShowCheckoutFacadeImpl extends DefaultCheckoutFacade implements Sho
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * @param orderModel
+	 */
+	private void setCustomerLoyaltyPoints(final OrderModel orderModel)
+	{
+		final CustomerModel customerModel = getCurrentUserForCheckout();
+		if (orderModel.getLoyaltyPoints() != null && orderModel.getLoyaltyPoints().intValue() > 0)
+		{
+			final int modifiedLoyaltyPoints = customerModel.getLoyaltyPoints().intValue() - orderModel.getLoyaltyPoints().intValue();
+			customerModel.setLoyaltyPoints(new Integer(modifiedLoyaltyPoints));
+			getModelService().save(customerModel);
+			getUserService().setCurrentUser(customerModel);
+
+		}
+
 	}
 
 
