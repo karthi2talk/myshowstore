@@ -5,10 +5,18 @@ package com.sonata.training.facades.checkout.impl;
 
 import de.hybris.platform.commercefacades.order.data.OrderData;
 import de.hybris.platform.commercefacades.order.impl.DefaultCheckoutFacade;
+import de.hybris.platform.core.model.order.AbstractOrderEntryModel;
 import de.hybris.platform.core.model.order.CartModel;
 import de.hybris.platform.core.model.order.OrderModel;
 import de.hybris.platform.core.model.user.CustomerModel;
 import de.hybris.platform.order.InvalidCartException;
+import de.hybris.platform.ordersplitting.model.ConsignmentEntryModel;
+import de.hybris.platform.ordersplitting.model.StockLevelModel;
+import de.hybris.platform.ordersplitting.model.WarehouseModel;
+import de.hybris.platform.stock.StockService;
+import de.hybris.platform.util.Utilities;
+
+import org.apache.log4j.Logger;
 
 import com.sonata.training.facades.checkout.ShowCheckoutFacade;
 
@@ -20,6 +28,9 @@ import com.sonata.training.facades.checkout.ShowCheckoutFacade;
 public class ShowCheckoutFacadeImpl extends DefaultCheckoutFacade implements ShowCheckoutFacade
 {
 
+	private static final Logger LOG = Logger.getLogger(ShowCheckoutFacadeImpl.class);
+
+	private StockService stockService;
 
 	@Override
 	public void addLoyaltyPoints(final Integer points)
@@ -63,6 +74,7 @@ public class ShowCheckoutFacadeImpl extends DefaultCheckoutFacade implements Sho
 				beforePlaceOrder(cartModel);
 				final OrderModel orderModel = placeOrder(cartModel);
 				setCustomerLoyaltyPoints(orderModel);
+				updateProductStockLevels(orderModel);
 				afterPlaceOrder(cartModel, orderModel);
 				if (orderModel != null)
 				{
@@ -71,6 +83,35 @@ public class ShowCheckoutFacadeImpl extends DefaultCheckoutFacade implements Sho
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * @param orderModel
+	 */
+	private void updateProductStockLevels(final OrderModel orderModel)
+	{
+		for (final AbstractOrderEntryModel orderEntry : orderModel.getEntries())
+		{
+			try
+			{
+				for (final ConsignmentEntryModel consignmentEntry : orderEntry.getConsignmentEntries())
+				{
+					final WarehouseModel wareHouseModel = consignmentEntry.getConsignment().getWarehouse();
+
+					final StockLevelModel stockLevel = stockService.getStockLevel(orderEntry.getProduct(), wareHouseModel);
+					final int updatedAvailableQuantity = stockLevel.getAvailable() - orderEntry.getQuantity().intValue();
+					stockLevel.setAvailable(updatedAvailableQuantity);
+					getModelService().save(stockLevel);
+					Utilities.invalidateCache(stockLevel.getPk());
+					getModelService().refresh(stockLevel);
+				}
+			}
+			catch (final Exception ex)
+			{
+				LOG.error("Error in updating product stock level for the product " + orderEntry.getProduct().getCode());
+			}
+		}
+
 	}
 
 	/**
@@ -89,6 +130,24 @@ public class ShowCheckoutFacadeImpl extends DefaultCheckoutFacade implements Sho
 		}
 
 	}
+
+	/**
+	 * @return the stockService
+	 */
+	public StockService getStockService()
+	{
+		return stockService;
+	}
+
+	/**
+	 * @param stockService
+	 *           the stockService to set
+	 */
+	public void setStockService(final StockService stockService)
+	{
+		this.stockService = stockService;
+	}
+
 
 
 

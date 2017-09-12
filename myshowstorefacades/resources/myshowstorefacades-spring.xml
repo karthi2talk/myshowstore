@@ -269,6 +269,7 @@
 <alias name="showCheckoutFacade" alias="checkoutFacade"/>
 	<bean name="showCheckoutFacade"
 		class="com.sonata.training.facades.checkout.impl.ShowCheckoutFacadeImpl" parent="defaultCheckoutFacade">
+		<property name="stockService" ref="stockService"/>
 	</bean>
 
 </beans>
