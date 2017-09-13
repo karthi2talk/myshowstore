@@ -10,13 +10,15 @@ INSERT_UPDATE Vendor;code[unique=true]
   
 INSERT_UPDATE Warehouse;code[unique=true];vendor(code);default[default=true]
 ;warehouse_c;myshowstore;
+
+
   
 INSERT_UPDATE StockLevel;available;warehouse(code)[unique=true];inStockStatus(code);maxPreOrder;maxStockLevelHistoryCount;overSelling;preOrder;productCode[unique=true];reserved
-;100;warehouse_c;forceInStock;0;-1;0;0;Shoe1;0
-;100;warehouse_c;forceInStock;0;-1;0;0;Shoe2;0
-;100;warehouse_c;forceInStock;0;-1;0;0;Shoe3;0
-;100;warehouse_c;forceInStock;0;-1;0;0;Shoe4;0
-;100;warehouse_c;forceInStock;0;-1;0;0;Shoe5;0
+;100;warehouse_c;;0;-1;0;0;Shoe1;0
+;100;warehouse_c;;0;-1;0;0;Shoe2;0
+;100;warehouse_c;;0;-1;0;0;Shoe3;0
+;100;warehouse_c;;0;-1;0;0;Shoe4;0
+;100;warehouse_c;;0;-1;0;0;Shoe5;0
 ;100;warehouse_c;forceInStock;0;-1;0;0;Shoe6;0
 ;100;warehouse_c;forceInStock;0;-1;0;0;Shoe7;0
 ;100;warehouse_c;notSpecified;0;-1;0;0;Shoe8;0
