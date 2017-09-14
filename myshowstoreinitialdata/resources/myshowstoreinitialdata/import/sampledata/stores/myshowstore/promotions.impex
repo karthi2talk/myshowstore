@@ -43,3 +43,9 @@ INSERT_UPDATE ProductPerfectPartnerPromotion;PromotionGroup(Identifier[default=$
 INSERT PromotionPriceRow;&priceId;Currency(isocode);price
 
 INSERT_UPDATE ProductBundlePromotion;PromotionGroup(Identifier[default=$defaultPromoGrp]);enabled[default=true,unique=true];code[unique=true];title;description;priority;products(code,$catalogVersion);bundlePrices(&priceId)
+
+
+
+INSERT_UPDATE CatalogVersionToRuleEngineContextMapping;context(name)[unique=true];catalogVersion(catalog(id),version)[unique=true]
+;promotions-context;myshowstoreProductCatalog:Online
+;promotions-preview-context;myshowstoreProductCatalog:Staged
