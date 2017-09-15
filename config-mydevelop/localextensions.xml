@@ -51,13 +51,6 @@
     <extension name='textfieldconfiguratortemplateatddtests' />
     <extension name='pcmbackofficesamplesaddon' />
     
-    
-     
-       <!-- <extension name="promotionengineservices" />
-       <extension name='electronicsstore' /> -->
-
-    
-    
     <extension name="myshowstorefulfilmentprocess"/>
 	<extension name="myshowstorecockpits"/>
 	<extension name="myshowstorecore"/>
@@ -65,6 +58,11 @@
 	<!-- <extension name="myshowstoretest"/> -->
 	<extension name="myshowstoreinitialdata"/>
 	<extension name="myshowstorestorefront"/>
+	
+	 <extension name="promotionenginetrail"/>
+	 <!-- <extension name="promotionengineservices" />
+     <extension name='electronicsstore' /> -->
+	
 
     
   </extensions>
