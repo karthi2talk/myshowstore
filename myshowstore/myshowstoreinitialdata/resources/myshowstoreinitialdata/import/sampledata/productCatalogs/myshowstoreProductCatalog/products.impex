@@ -1,0 +1,32 @@
+# Macros / Replacement Parameter definitions
+$productCatalog=myshowstoreProductCatalog
+$productCatalogName=My Show Store Product Catalog
+
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$supercategories=supercategories(code, $catalogVersion)
+$baseProduct=baseProduct(code,$catalogVersion)
+$approved=approvalstatus(code)[default='approved']
+
+# Insert Products
+INSERT_UPDATE Product;code[unique=true];$supercategories;manufacturerName;manufacturerAID;unit(code);ean;variantType(code);$catalogVersion;$approved
+;Shoe1;Men,Shoes;;Bata;pieces;6845645;ShoeSizeVariantProduct
+;Shoe2;Men,Shoes;;Action;pieces;86454;ShoeColorVariantProduct
+;Shoe3;Men,Shoes;;Puma;pieces;653545
+;Shoe4;Women,Shoes;;VKC;pieces;434535
+;Shoe5;Women,Shoes;;Bata;pieces;978678
+;Shoe6;Women,Shoes;;Action;pieces;99653
+;Shoe7;Kids,Shoes;;Puma;pieces;74174
+;Shoe8;Kids,Shoes;;Paragon;pieces;96332
+;Shoe9;Kids,Shoes;;Lancer;pieces;2134554
+
+
+INSERT_UPDATE ShoeSizeVariantProduct;code[unique=true];$baseProduct;ean;unit(code);size;$supercategories;approvalstatus(code)[default='approved'];$catalogVersion
+;Shoe1_L   ; Shoe1;21346;pieces;L;
+;Shoe1_XL  ; Shoe1;43552;pieces;XL
+;Shoe1_XXL ; Shoe1;84656;pieces;XXL
+
+
+INSERT_UPDATE ShoeColorVariantProduct;code[unique=true];$baseProduct;ean;unit(code);color;$supercategories;approvalstatus(code)[default='approved'];$catalogVersion
+;Shoe2_black   ; Shoe2;231346;pieces;black
+;Shoe2_brown   ; Shoe2;433552;pieces;brown
+;Shoe2_grey    ; Shoe2;846456;pieces;grey

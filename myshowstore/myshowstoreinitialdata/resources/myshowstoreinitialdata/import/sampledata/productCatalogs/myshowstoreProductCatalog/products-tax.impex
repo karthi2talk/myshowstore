@@ -1,0 +1,51 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2017 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+# ImpEx for Importing Product taxex into the Store
+
+# Insert Product taxes for US
+INSERT_UPDATE ProductTaxCode;productCode[unique=true];taxCode;taxArea[unique=true]
+;Shoe1;PC080601;US
+;Shoe2;PC080601;US
+;Shoe3;PC080601;US
+;Shoe4;PC080601;US
+;Shoe5;PC080601;US
+;Shoe6;PC080601;US
+;Shoe7;PC080601;US
+;Shoe8;PC080601;US
+;Shoe9;PC080601;US
+;Shoe1_L;PC080601;US
+;Shoe1_XL;PC080601;US
+;Shoe1_XXL;PC080601;US
+;Shoe2_black;PC080601;US
+;Shoe2_brown;PC080601;US
+;Shoe2_grey;PC080601;US
+
+
+# Insert Product taxes for JP
+INSERT_UPDATE ProductTaxCode;productCode[unique=true];taxCode;taxArea[unique=true]
+
+# Insert Product taxes for GB
+INSERT_UPDATE ProductTaxCode;productCode[unique=true];taxCode;taxArea[unique=true]
+
+# Insert Product taxes fo FR
+INSERT_UPDATE ProductTaxCode;productCode[unique=true];taxCode;taxArea[unique=true]
+
+# Insert Product taxes for PL
+INSERT_UPDATE ProductTaxCode;productCode[unique=true];taxCode;taxArea[unique=true]
+
+# Insert Product taxes for DE
+INSERT_UPDATE ProductTaxCode;productCode[unique=true];taxCode;taxArea[unique=true]
+
+# Insert Product taxes for CA
+INSERT_UPDATE ProductTaxCode;productCode[unique=true];taxCode;taxArea[unique=true]
+
+# Insert Product taxes for CN
+INSERT_UPDATE ProductTaxCode;productCode[unique=true];taxCode;taxArea[unique=true]
