@@ -82,7 +82,7 @@
 		<bean class="com.sonata.trining.storefront.interceptors.beforecontroller.ThemeBeforeControllerHandler" />
 	    <bean class="com.sonata.trining.storefront.interceptors.beforecontroller.RequireSiteHardLoginBeforeControllerHandler" >
 				<property name="redirectStrategy" ref="redirectStrategy"/>
-				<property name="loginUrl" value="/login"/>
+				<property name="loginUrl" value="/login/register"/>
 				<property name="loginAndCheckoutUrl" value="/login/checkout"/>
 				<property name="requireHardLoginEvaluator" ref="requireHardLoginEvaluator"/>
 		</bean> 
