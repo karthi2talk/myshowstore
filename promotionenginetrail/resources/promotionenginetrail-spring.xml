@@ -98,21 +98,39 @@
 		<property name="add" ref="customerReviewRaoExtractor" />
 	</bean>
 
-	<bean id="addUserToUserGroupRAOAction" parent="abstractRuleExecutableSupport"
+
+	<alias alias="addUserToUserGroupRAOAction" name="defaultAddUserToUserGroupRAOAction" />
+	<bean id="defaultAddUserToUserGroupRAOAction" parent="abstractRuleExecutableSupport"
 		class="com.sonata.training.rule.actions.AddUserToUserGroupRAOAction" />
 
-	<bean id="addUserToUserGroupAction"
+
+	<alias alias="addUserToUserGroupAction" name="defaultAddUserToUserGroupAction" />
+	<bean id="defaultAddUserToUserGroupAction"
 		class="de.hybris.platform.ruledefinitions.actions.DefaultRuleExecutableAction">
 		<property name="raoAction" ref="addUserToUserGroupRAOAction" />
 	</bean>
 
-	<bean id="addUserToUserGroupActionStrategy" parent="abstractRuleActionStrategy"
+	<alias name="defaultAddUserToUserGroupActionStrategy" alias="addUserToUserGroupActionStrategy" />
+	<bean id="defaultAddUserToUserGroupActionStrategy" parent="abstractRuleActionStrategy"
 		class="com.sonata.training.myshowpromotions.DefaultAddUserToUserGroupActionStrategy">
 		<property name="promotionAction"
 			value="de.hybris.promotionenginetrail.model.RuleBasedAddUserToUserGroupActionModel" />
 		<property name="userService" ref="userService" />
 	</bean>
-	
-	<bean id="ruleCustomerReviewTranslator" class="com.sonata.training.myshowpromotions.definitions.conditions.RuleCustomerReviewTranslator" />
+
+	<bean id="ruleCustomerReviewTranslator"
+		class="com.sonata.training.myshowpromotions.definitions.conditions.RuleCustomerReviewTranslator" />
+
+
+	<bean id="promotionenginetrailActionStrategies" depends-on="actionStrategies"
+		parent="listMergeDirective">
+		<property name="add" ref="defaultAddUserToUserGroupActionStrategy" />
+	</bean>
+
+	<bean id="promotionenginetrailPromotionActionStrategiesMapping"
+		depends-on="promotionActionStrategiesMapping" parent="mapMergeDirective">
+		<property name="key" value="defaultAddUserToUserGroupRAOAction" />
+		<property name="value" ref="defaultAddUserToUserGroupActionStrategy" />
+	</bean>
 
 </beans>
