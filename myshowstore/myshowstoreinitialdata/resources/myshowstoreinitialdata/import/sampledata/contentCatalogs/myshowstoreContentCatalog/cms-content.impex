@@ -274,9 +274,17 @@ INSERT_UPDATE SimpleBannerComponent                ; $contentCV[unique=true]    
 INSERT_UPDATE CMSParagraphComponent                ; $contentCV[unique=true]    ; uid[unique=true]                                     ; name                                                                                                                                                                                                           ; &componentRef
                                                    ;                            ; EmptyCartParagraphComponent                          ; Empty Cart Paragraph Component                                                                                                                                                                                 ; EmptyCartParagraphComponent
                                                    ;                            ; HelpParagraphComponent                               ; Help Paragraph Component                                                                                                                                                                                       ; HelpParagraphComponent
-  
+
+
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpg']
+;;/images/theme/banner-free-delivery2.jpg;banner-free-delivery2.jpg;$siteResource/images/theme/banner-free-delivery2.jpg;
+   
+# CMS Image Components
+INSERT_UPDATE CMSImageComponent;$contentCV[unique=true];uid[unique=true];$picture;&componentRef
+;;CartPageFreeDeliveryBannerImage;/images/theme/banner-free-delivery2.jpg;CartPageFreeDeliveryBannerImage  
+
 INSERT_UPDATE ContentSlot                          ; $contentCV[unique=true]    ; uid[unique=true]                                     ; name                                                                                                                                                                                                           ; active                                                                                                                                                                                                                                       ; cmsComponents(&componentRef)
-                                                   ;;TopContent-cartPage;Top Slot for Cart Page;true;NextDayDeliveryBanner120,CartComponent
+;;TopContent-cartPage;Top Slot for Cart Page;true;NextDayDeliveryBanner120,CartPageFreeDeliveryBannerImage,CartComponent
 ;;EmptyCartMiddleContent-cartPage;Empty Cart Middle Slot for Cart Page;true;EmptyCartParagraphComponent
 ;;CenterLeftContentSlot-cartPage;Center Left Content Slot for Cart Page;true;PromotionsComponent,PotentialPromotionsComponent
 ;;CenterRightContentSlot-cartPage;Center Right Content Slot for Cart Page;true;CartTotalsComponent
@@ -542,3 +550,69 @@ INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;c
   
 INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='multiStepCheckoutSummaryPage'];contentSlot(uid,$contentCV)[unique=true]
 ;;Side-CheckoutSummary;SideContent;;SideContent-CheckoutSummary
+
+
+
+#####
+
+
+
+
+$defaultPassword=12341234
+$personalizationsiteResource=jar:com.sonata.training.constants.PersonalizationtrailConstants&/personalizationtrail/import
+$medias=medias(code, $contentCV);
+$mediaContainer=media(qualifier, $contentCV);
+ 
+INSERT_UPDATE UserGroup;uid[unique=true];groups(uid);members(uid);
+;personalizedUserGroup1;;;
+;personalizedUserGroup2;;;
+ 
+INSERT_UPDATE Customer;uid[unique=true];groups(uid);password[default=$defaultPassword];name;
+;customer1@hybris.com;customergroup,personalizedUserGroup1;;John Doe;
+;customer2@hybris.com;customergroup,personalizedUserGroup2;;John Doe;
+
+INSERT_UPDATE CxCustomization;code[unique=true];name;group(code,$contentCV);$contentCV[unique=true];active[default=true]
+#####         ;Banner;Banner Customization;;;;   Create through backoffice
+ 
+INSERT_UPDATE CxVariation;code[unique=true];name;$contentCV[unique=true];enabled[default=true];customization(code,$contentCV)[unique=true];&variationRef
+;variationForUserGroup;variationForUserGroup;;;Banner;variationForUserGroup
+ 
+INSERT_UPDATE UserGroupTrigger;code[unique=true];variation(code,$contentCV)[unique=true];$contentCV[unique=true];userGroup(uid);
+;userGroupTrigger;variationForUserGroup;;personalizedUserGroup1;
+ 
+INSERT_UPDATE Media;mediaFormat(qualifier);code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true];realfilename;altText;mime[default='image/jpeg'];$contentCV[unique=true];folder(qualifier)[default=images];
+;mobile;userGroupBanner_480W.jpg;$personalizationsiteResource/images/banners/userGroupBanner_480W.jpg;userGroupBanner_480W.jpg;"Save Big On Select SLR & DSLR Cameras";
+;tablet;userGroupBanner_770W.jpg;$personalizationsiteResource/images/banners/userGroupBanner_770W.jpg;userGroupBanner_770W.jpg;"Save Big On Select SLR & DSLR Cameras";
+;desktop;userGroupBanner_960W.jpg;$personalizationsiteResource/images/banners/userGroupBanner_960W.jpg;userGroupBanner_960W.jpg;"Save Big On Select SLR & DSLR Cameras";
+;widescreen;userGroupBanner_1400W.jpg;$personalizationsiteResource/images/banners/userGroupBanner_1400W.jpg;userGroupBanner_1400W.jpg;"Save Big On Select SLR & DSLR Cameras";
+ 
+INSERT_UPDATE MediaContainer;qualifier[unique=true];$medias;$contentCV[unique=true]
+;variationForUserGroupMediaContainer;userGroupBanner_480W.jpg,userGroupBanner_770W.jpg,userGroupBanner_960W.jpg,userGroupBanner_1400W.jpg
+ 
+INSERT_UPDATE SimpleResponsiveBannerComponent;$contentCV[unique=true];uid[unique=true];$mediaContainer;name;urlLink;&componentRef
+;;variationForUserGroupComponent;variationForUserGroupMediaContainer;Electronics Homepage Splash Banner Component;/OpenCatalogue/Cameras/Digital-Cameras/Digital-SLR/c/578;variationForUserGroupComponent
+
+#####
+INSERT_UPDATE CxCmsComponentContainer;$contentCV[unique=true];uid[unique=true];name;defaultCmsComponent(&componentRef);&componentRef
+;;Section1ASlotHomepageCxContainer;Section1ASlotHomepageCxContainer;;Section1ASlotHomepageCxContainer
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];active;cmsComponents(&componentRef)
+;;Section1ASlot-Homepage;true;Section1ASlotHomepageCxContainer
+
+INSERT_UPDATE ContentSlotForPage; $contentCV[unique=true]; uid[unique=true]; position[unique=true] ; page(uid,$contentCV)[unique=true][default='homepage']; contentSlot(uid,$contentCV)[unique=true]
+;; Section1A-Homepage ; Section1A; ; Section1ASlot-Homepage
+######
+
+ 
+UPDATE CxCmsComponentContainer;$contentCV[unique=true];uid[unique=true];simpleCMSComponents(&componentRef)[mode=append]
+;;Section1ASlotHomepageCxContainer;variationForUserGroupComponent
+ 
+INSERT_UPDATE CxCmsAction;containerId;componentId;code[unique=true];type(code);target;variation(&variationRef);$contentCV[unique=true]
+;Section1ASlotHomepageCxContainer;variationForUserGroupComponent;userGroupAction;PLAIN;cxCmsActionPerformable;variationForUserGroup;
+
+
+
+
+
+
+
