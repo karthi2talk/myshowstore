@@ -1,5 +1,6 @@
 
 *.class
+build.xml
 addonsrc/
 gensrc/
 bin/
@@ -7,3 +8,6 @@ jalo/
 addons/
 /tag/addons/
 /messages/addons/
+/acceleratorstorefrontcommons/
+
+
