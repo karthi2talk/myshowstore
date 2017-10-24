@@ -59,8 +59,8 @@
 	<extension name="myshowstoreinitialdata"/>
 	<extension name="myshowstorestorefront"/>
 	
-	 <extension name="promotionenginetrail"/>
-	 <!-- <extension name="promotionengineservices" />
+	  <!-- <extension name="promotionenginetrail"/>
+	 <extension name="promotionengineservices" />
      <extension name='electronicsstore' /> -->
 	
 
