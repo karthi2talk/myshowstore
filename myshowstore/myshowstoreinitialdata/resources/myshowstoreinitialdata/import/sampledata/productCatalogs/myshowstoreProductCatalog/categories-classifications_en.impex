@@ -1,0 +1,36 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2017 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+# ImpEx for Importing Category Classifications into Electronics Store
+
+# Macros / Replacement Parameter definitions
+$productCatalog=myshowstoreProductCatalog
+$productCatalogName=My Showstore Product Catalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$classCatalogVersion=catalogversion(catalog(id[default='ShoeClassification']),version[default='1.0'])[unique=true,default='ShoeClassification:1.0']
+$classSystemVersion=systemVersion(catalog(id[default='ShoeClassification']),version[default='1.0'])[unique=true]
+$class=classificationClass(ClassificationClass.code,$classCatalogVersion)[unique=true]
+$lang=en
+
+
+####### Sample start ##########
+
+# Insert Classifications
+INSERT_UPDATE ClassificationClass;$classCatalogVersion;code[unique=true];name[lang=$lang]
+;;Dimensions;Dimensions
+
+# Insert Classification Attributes
+INSERT_UPDATE ClassificationAttribute;$classSystemVersion;code[unique=true];name[lang=$lang]
+;;height1, 49;Height
+;;width1, 49;Width
+;;weight1, 94;Weight
+
+
+

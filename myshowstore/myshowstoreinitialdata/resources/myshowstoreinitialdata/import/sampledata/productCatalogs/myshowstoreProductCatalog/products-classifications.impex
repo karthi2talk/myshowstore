@@ -1,0 +1,18 @@
+$productCatalog=myshowstoreProductCatalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$clAttrModifiers=system='ShoeClassification',version='1.0',translator=de.hybris.platform.catalog.jalo.classification.impex.ClassificationAttributeTranslator,lang=en
+
+
+
+
+# Classification: Dimensions conditions (Dimensions)
+$feature1=@height1, 49[$clAttrModifiers]; 
+$feature2=@width1, 49[$clAttrModifiers];
+$feature3=@weight1, 94[$clAttrModifiers]; 
+
+
+INSERT_UPDATE Product;code[unique=true];$feature1;$feature2;$feature3;$catalogVersion;
+ ;Shoe1;10,49;50,49;500,94
+ ;Shoe2;<ignore>;40,49;400,94
+ ;Shoe3;12,49;<ignore>;600,94
+ ;Shoe4;25,49;<ignore>;<ignore>
